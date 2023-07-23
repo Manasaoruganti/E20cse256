@@ -34,8 +34,8 @@ async function getNumbers(req, res) {
 		const sortedNumbers = responseData
 			.flatMap((numbers) => numbers)
 			.sort((a, b) => a - b);
-
-		res.json({ numbers: sortedNumbers });
+		const unique = [...new Set(sortedNumbers)];
+		res.json({ numbers: unique });
 	} catch (error) {
 		res
 			.status(500)
